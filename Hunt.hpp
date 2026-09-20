@@ -1,0 +1,125 @@
+// PROJECT IDENTIFIER: 40FB54C86566B9DDEAB902CC80E8CE85C1261AAD
+
+#ifndef HUNT__HPP
+#define HUNT__HPP
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <queue>
+#include <stack>
+#include <deque>
+#include <algorithm>
+#include <functional>
+#include <utility>
+#include <cassert>
+#include <getopt.h>
+
+// put all operations here
+// everything should be controlled as member functions and member variables
+// 1. reading maps (either mapfile, listfile should create the same grid map)
+// 2. hunt operations
+// - use containers of structs, so it contains row, col, terrain type, bool investigated
+// - use deque, and only switch output method between stack/queue
+// - store investigated paths into path vector
+// 3. use bool discovered, to keep track of elements in stack
+// - if reached dead end, clear path vector
+// - start over from next order in container
+// 4. check if treasure was found or not
+// 5. if treasure not found, captain keeps searching, repeat process
+// 6. if treasure found, program ends
+
+// for separating hunts
+enum class Role {
+    CAPTAIN,
+    FIRST_MATE,
+};
+enum class Mode {
+    kStack,
+    kQueue,
+};
+struct Options {
+    Mode captain_mode = Mode::kStack;
+    Mode first_mate_mode = Mode::kQueue;
+    std::string hunt_order = "NESW";
+    bool verbose = false;
+    bool stats = false;
+    std::string show_path;
+};  // Options{}
+
+void printHelp(char *command);
+
+void getOptions(int argc, char **argv, Options &options);
+
+class Hunt {
+    struct Block;
+    public:
+    // read command line
+    void load_from_input();
+
+    // make a hunt variable that will operate the entire game.
+    Hunt();
+    Hunt(Mode &captain, Mode &first_mate, std::string hunt_order_input);
+    
+    // functions to check variables inside the hunt algorithm
+    char terrain_at(int row, int col);
+    int get_size();
+    
+    // functions to run each iteration of searches
+    bool captain_hunt(Mode &capmode, Mode &matemode, Block current);
+    bool first_mate_hunt(Mode &matemode, Block current);
+    std::pair<int, int> directionOffset(char direction);
+    void cal_path();
+    std::deque<Block> build_path();
+    void build_path_map();
+
+    Block get_start();
+    int get_ashore();
+    int get_path();
+    std::pair<int, int> get_treasure();
+    Block Treasure();
+    int getLand();
+    int getWater();
+
+     // 4. printing output
+    void printStats(bool treasure_found);
+    void printPath(std::string path_option);
+    void printVerbose(bool treasure_found);
+
+    private:
+    // each block of the map
+    struct Block {
+        int row;
+        int col;
+        char terrain = '.';
+        bool discovered = false;
+    };
+
+    // 1. variables for making the grid
+    int size;
+    std::vector<std::vector<Block>> map;
+    std::vector<std::vector<Block>> path_track;
+    std::vector<std::vector<Block>> path_map;
+    char file_type;
+    std::string filename;
+    Block starting;
+
+    // 2. variables for hunt operation
+    Mode captain_mode;
+    Mode first_mate_mode;
+    std::string huntOrder;
+    std::deque<Block> captain_search;
+    std::deque<Block> first_mate_search;
+    std::pair<int, int> directions;
+    Block TREASURE;
+    std::vector<Block> ashore_list;
+
+    // 3. variables for storing output results
+    int water_investigated = 0;
+    int land_investigated = 0;
+    int ashore = 0;
+    int path_length = 0;
+
+};
+
+#endif
