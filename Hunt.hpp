@@ -47,72 +47,74 @@ struct Options {
     std::string show_path;
 };  // Options{}
 
-void printHelp(char *command);
+void printHelp(char const *command);
 
 void getOptions(int argc, char **argv, Options &options);
 
 class Hunt {
     struct Block;
+    struct Coordinates;
     public:
     // read command line
     void load_from_input();
 
     // make a hunt variable that will operate the entire game.
     Hunt();
-    Hunt(Mode &captain, Mode &first_mate, std::string hunt_order_input);
+    Hunt(Mode &captain, Mode &first_mate, std::string &hunt_order_input);
     
     // functions to check variables inside the hunt algorithm
-    char terrain_at(int row, int col);
+    //char terrain_at(int row, int col);
     int get_size();
     
     // functions to run each iteration of searches
-    bool captain_hunt(Mode &capmode, Mode &matemode, Block current);
-    bool first_mate_hunt(Mode &matemode, Block current);
+    bool captain_hunt(Mode &capmode, Mode &matemode, Coordinates current);
+    bool first_mate_hunt(Mode &matemode, Coordinates current);
     std::pair<int, int> directionOffset(char direction);
     void cal_path();
-    std::deque<Block> build_path();
+    std::deque<char> build_path();
     void build_path_map();
 
-    Block get_start();
-    int get_ashore();
-    int get_path();
-    std::pair<int, int> get_treasure();
-    Block Treasure();
+    //try parent out in block struct
+    std::pair<int, int> getParent(int row, int col, char direction);
+
+    Coordinates get_start();
+    Coordinates get_treasure();
     int getLand();
     int getWater();
+    int getPath();
 
      // 4. printing output
     void printStats(bool treasure_found);
-    void printPath(std::string path_option);
+    void printPath(std::string &path_option);
     void printVerbose(bool treasure_found);
 
     private:
     // each block of the map
     struct Block {
+        char terrain = '.';
+        char parent = '\0';
+    };
+    struct Coordinates {
         int row;
         int col;
-        char terrain = '.';
-        bool discovered = false;
     };
 
     // 1. variables for making the grid
-    int size;
+    int size = 0;
     std::vector<std::vector<Block>> map;
-    std::vector<std::vector<Block>> path_track;
-    std::vector<std::vector<Block>> path_map;
+    //std::vector<std::vector<char>> path_track;
+    //std::vector<std::vector<char>> path_map;
     char file_type;
-    std::string filename;
-    Block starting;
+    //std::string filename = "";
+    Coordinates starting;
 
     // 2. variables for hunt operation
     Mode captain_mode;
     Mode first_mate_mode;
     std::string huntOrder;
-    std::deque<Block> captain_search;
-    std::deque<Block> first_mate_search;
-    std::pair<int, int> directions;
-    Block TREASURE;
-    std::vector<Block> ashore_list;
+    //std::pair<int, int> directions;
+    Coordinates TREASURE;
+    std::vector<Coordinates> ashore_list;
 
     // 3. variables for storing output results
     int water_investigated = 0;

@@ -27,7 +27,6 @@ int main(int argc, char *argv[]) {
     bool found = hunt.captain_hunt(options.captain_mode, options.first_mate_mode, hunt.get_start());
     if (found) {
         hunt.cal_path();
-        hunt.build_path_map();
     }
 
     if(options.verbose) {
@@ -37,15 +36,18 @@ int main(int argc, char *argv[]) {
         hunt.printStats(found);
     }
     if(options.show_path == "M" || options.show_path == "L") {
-        hunt.printPath(options.show_path);
+        if(found) {
+            if(options.show_path == "M") {hunt.build_path_map();}
+            hunt.printPath(options.show_path);
+        }
     }
 
     if(found) {
-        std::cout << "Treasure found at " << hunt.get_treasure().first << "," <<
-        hunt.get_treasure().second << " with path length " << 
-        hunt.get_path() << "." << std::flush;
+        std::cout << "Treasure found at " << hunt.get_treasure().row << "," <<
+        hunt.get_treasure().col << " with path length " << 
+        hunt.getPath() << ".\n" << std::flush;
     }
     else {
-        std::cout << "No treasure found after investigating " << hunt.getWater() + hunt.getLand() << " locations." << std::flush;
+        std::cout << "No treasure found after investigating " << hunt.getWater() + hunt.getLand() << " locations.\n" << std::flush;
     }
 }

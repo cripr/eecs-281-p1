@@ -1,9 +1,16 @@
 // PROJECT IDENTIFIER: 40FB54C86566B9DDEAB902CC80E8CE85C1261AAD
 
+
+// split blocks into 2 parts: terrain, coordinates DONE
+
+// backtrack only use a container of char (parent direction)
+// and compute the coordinates for path
+
+// delete discovered bool, just use parent char as discovery checker DONE
 #include "Hunt.hpp"
 
 
-void printHelp(char *command) {
+void printHelp(char const *command) {
     std::cout << "Usage: " << command << " [-c|-f <STACK|QUEUE>] | -h\n" << std::flush;
 }
 
@@ -131,12 +138,8 @@ void Hunt::load_from_input() {
     }
 
     map.resize(size);
-    path_track.resize(size);
-    path_map.resize(size);
     for (int row = 0; row < size; row++) {
         map[row].resize(size);
-        path_track[row].resize(size);
-        path_map[row].resize(size);
     }
 
     if(file_type == 'M') {
@@ -144,7 +147,7 @@ void Hunt::load_from_input() {
             for (int col = 0; col < size; col++) {
                 char terrain;
                 std::cin >> terrain;
-                Block b = {row, col, terrain, false};
+                Block b = {terrain, '\0'};
                 if(!(b.terrain == '@') && !(b.terrain == '$') && 
                 !(b.terrain == 'o') && !(b.terrain == '.') && 
                 !(b.terrain == '#')) {
@@ -152,9 +155,9 @@ void Hunt::load_from_input() {
                     exit(1);                    
                 }  
                 if (b.terrain == '@') {
-                    b.discovered = true;
+                    b.parent = '@';
                     start++;
-                    starting = b;
+                    starting = {row, col};
                 }
                 map[row][col] = b;              
                 if (b.terrain == '$') {
@@ -166,7 +169,7 @@ void Hunt::load_from_input() {
     else if (file_type == 'L') {
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-                map[row][col] = {row, col, '.', false};
+                map[row][col] = {'.', '\0'};
             }
         }
         int input_row;
@@ -178,7 +181,8 @@ void Hunt::load_from_input() {
                 std::cerr << "Invalid coordinates in list mode input\n" << std::flush;
                 exit(1);                 
             }
-            Block b = {input_row, input_col, terrain, false};
+            Coordinates c = {input_row, input_col};
+            Block b = {terrain, '\0'};
             if(!(b.terrain == '@') && !(b.terrain == '$') && 
             !(b.terrain == 'o') && !(b.terrain == '.') && 
             !(b.terrain == '#')) {
@@ -186,9 +190,9 @@ void Hunt::load_from_input() {
                 exit(1);                    
             }            
             if (b.terrain == '@') {
-                b.discovered = true;
+                b.parent = '@';
                 start++;
-                starting = b;
+                starting = c;
             }
             map[input_row][input_col] = b;
             if (b.terrain == '$') {
@@ -205,20 +209,12 @@ void Hunt::load_from_input() {
         std::cerr << "Map does not have a treasure location\n" << std::flush;
         exit(1);
     }
-    if ((start > 1)) {
-        std::cerr << "Map has more than 1 start location\n" << std::flush;
-        exit(1);
-    }
-    if ((money > 1)) {
-        std::cerr << "Map has more than 1 treasure location\n" << std::flush;
-        exit(1);
-    }
 }
 
 // hunt variable that hosts the entire hunt game
 Hunt::Hunt() {}
 
-Hunt::Hunt(Mode &captain, Mode &first_mate, std::string hunt_order_input) : 
+Hunt::Hunt(Mode &captain, Mode &first_mate, std::string &hunt_order_input) : 
 captain_mode(captain), first_mate_mode(first_mate), huntOrder(hunt_order_input) {
     
 }
@@ -242,8 +238,10 @@ std::pair<int, int> Hunt::directionOffset(char direction) {
     }
 }
 
+
 // big hunt function. return true if treasure found, false if not
-bool Hunt::captain_hunt(Mode &capmode, Mode &matemode, Block current) {
+bool Hunt::captain_hunt(Mode &capmode, Mode &matemode, Coordinates current) {
+    std::deque<Coordinates> captain_search;
     bool winnerwinner = false;
     while(true) {
         water_investigated++;
@@ -256,21 +254,19 @@ bool Hunt::captain_hunt(Mode &capmode, Mode &matemode, Block current) {
             
             Block &dis = map[new_row][new_col];
 
-            if (dis.discovered || dis.terrain == '#') {continue;}
+            if (dis.parent != '\0' || dis.terrain == '#') {continue;}
 
             else if (dis.terrain == 'o' || dis.terrain == '$') {
-                dis.discovered = true;
-                path_track[new_row][new_col] = current; 
-                winnerwinner = first_mate_hunt(matemode, dis);
-                ashore_list.push_back(dis);
+                dis.parent = d; 
+                winnerwinner = first_mate_hunt(matemode, Coordinates{new_row, new_col});
+                ashore_list.push_back(Coordinates{new_row, new_col});
                 ashore++;
                 if(winnerwinner) {return true;}
             }
 
             else {
-                dis.discovered = true;
-                path_track[new_row][new_col] = current;
-                captain_search.push_back(dis);
+                dis.parent = d;
+                captain_search.push_back(Coordinates{new_row, new_col});
             }
         }
         // if treasure not found, keep on sailing: update the next block
@@ -291,12 +287,13 @@ bool Hunt::captain_hunt(Mode &capmode, Mode &matemode, Block current) {
 // reset the container by removing all the discovered blocks (max4 at a turn), 
 // going to control going back to start, starting again from the starting point in another function
 
-bool Hunt::first_mate_hunt(Mode &matemode, Block current) {
-    if (current.terrain == '$') {
+bool Hunt::first_mate_hunt(Mode &matemode, Coordinates current) {
+    if (map[current.row][current.col].terrain == '$') {
         land_investigated++;
         TREASURE = current;
         return true;
     }
+    std::deque<Coordinates> first_mate_search;
     while(true) {
         land_investigated++;
         for (char d : huntOrder) {
@@ -308,18 +305,16 @@ bool Hunt::first_mate_hunt(Mode &matemode, Block current) {
             
             Block &dis = map[new_row][new_col];
 
-            if (dis.discovered || dis.terrain == '#') {continue;}
+            if (dis.parent != '\0' || dis.terrain == '#') {continue;}
 
             else if (dis.terrain == 'o') {
-                dis.discovered = true;
-                path_track[new_row][new_col] = current;
-                first_mate_search.push_back(dis);
+                dis.parent = d;
+                first_mate_search.push_back(Coordinates{new_row, new_col});
             }
 
             else if (dis.terrain == '$') {
-                dis.discovered = true;
-                path_track[new_row][new_col] = current;
-                TREASURE = dis;
+                dis.parent = d;
+                TREASURE = {new_row, new_col};
                 land_investigated++;
                 return true;
             }
@@ -340,23 +335,19 @@ bool Hunt::first_mate_hunt(Mode &matemode, Block current) {
     }
 }
 
-Hunt::Block Hunt::get_start() {
+std::pair<int, int> Hunt::getParent(int row, int col, char direction) {
+        if (direction == 'N') {return {row + 1, col};}
+        else if (direction == 'E') {return {row, col - 1};}
+        else if (direction == 'S') {return {row - 1, col};}
+        else if (direction == 'W') {return {row, col + 1};}
+        else {return{row, col};}
+    }
+
+Hunt::Coordinates Hunt::get_start() {
     return starting;
 }
 
-int Hunt::get_ashore() {
-    return ashore;
-}
-
-int Hunt::get_path() {
-    return path_length;
-}
-
-std::pair<int, int> Hunt::get_treasure() {
-    return {TREASURE.row, TREASURE.col};
-}
-
-Hunt::Block Hunt::Treasure() {
+Hunt::Coordinates Hunt::get_treasure() {
     return TREASURE;
 }
 
@@ -367,66 +358,102 @@ int Hunt::getWater() {
     return water_investigated;
 }
 
-void Hunt::cal_path() {
-    std::deque<Block> path = build_path();
-    path_length =  static_cast<int>(path.size()) - 1;
+int Hunt::getPath() {
+    return path_length;
 }
 
-std::deque<Hunt::Block> Hunt::build_path() {
-    std::deque<Block> fullpath; 
-    Block curr = TREASURE;
-    while(!(curr.row == starting.row && curr.col == starting.col)) {
-        fullpath.push_front(curr);
-        curr = path_track[curr.row][curr.col];
+void Hunt::cal_path() {
+    std::deque<char> path = build_path();
+    path_length = (static_cast<int>(path.size()));
+}
+
+std::deque<char> Hunt::build_path() {
+    std::deque<char> fullpath; 
+    std::pair<int, int> curr = {TREASURE.row, TREASURE.col};
+    while(!(curr.first == starting.row && curr.second == starting.col)) {
+        char direction = map[curr.first][curr.second].parent;
+        fullpath.push_front(direction);
+        curr = getParent(curr.first, curr.second, direction);
     }
-    fullpath.push_front(starting);
     return fullpath;
 }
 
 void Hunt::build_path_map() {
-    path_map = map;
-    std::deque<Block> path = build_path();
+    std::deque<char> path = build_path();
+    Coordinates curr = starting;
     
-    for (size_t i = 1; i + 1 < path.size(); i++) {
-        Block &prev = path[i - 1];
-        Block &curr = path[i];
-        Block &next = path[i + 1];
+    for (size_t i = 0; i < path.size(); i++) {
+        char direction = path[i];
+        std::pair<int,int> offset = directionOffset(direction);
+        curr = {curr.row + offset.first, curr.col + offset.second};
 
-        bool vert_from = (prev.col == curr.col);
-        bool vert_to = (curr.col == next.col);
+        char path_char;
+        bool vertical = (offset.first != 0);
 
-        if(vert_from && vert_to) {
-            path_map[curr.row][curr.col].terrain = '|';
-        }
-        else if (!vert_from && !vert_to){
-            path_map[curr.row][curr.col].terrain = '-';
+        if(i+1 < path.size()) {
+            char next_dir = path[i+1];
+            std::pair<int,int> next_offset = directionOffset(next_dir);
+            bool next_vertical = (next_offset.first != 0);
+            if (vertical == next_vertical) {
+                if(vertical) {
+                    path_char = '|';
+                }
+                else{
+                    path_char = '-';
+                }
+            }
+            else {
+                path_char = '+';
+            }
         }
         else {
-            path_map[curr.row][curr.col].terrain = '+';
+            if(vertical) {
+                path_char = '|';
+            }
+            else{
+                path_char = '-';
+            }
+        }
+        if (!(curr.row == TREASURE.row && curr.col == TREASURE.col)) {
+            map[curr.row][curr.col].terrain = path_char;
         }
     }
-    path_map[TREASURE.row][TREASURE.col].terrain = 'X';
+    map[TREASURE.row][TREASURE.col].terrain = 'X';
 }
 
-void Hunt::printPath(std::string path_option) {
+void Hunt::printPath(std::string &path_option) {
     if(path_option == "M") {   
         for (int row =0; row <size; row++) {
             for (int col=0; col <size; col++) {
-                std::cout << path_map[row][col].terrain;
+                std::cout << map[row][col].terrain;
             }
             std::cout << "\n";
         }
     }
     else {
-        std::deque<Block> path = build_path();
+        std::deque<char> path = build_path();
         std::deque<std::pair<int, int>> sail_coord;
         std::deque<std::pair<int, int>> search_coord;
+
+        Coordinates curr = starting;
+        char start_terrain = map[curr.row][curr.col].terrain;
+
+        if (start_terrain == 'o' || start_terrain == '$') {
+            search_coord.push_back({curr.row, curr.col});
+        }
+        else {
+            sail_coord.push_back({curr.row, curr.col});
+        }
+
         for (size_t i = 0; i < path.size(); i++) {
-            if(path[i].terrain == '.' || path[i].terrain == '@'){
-                sail_coord.push_back({path[i].row, path[i].col});
+            std::pair<int,int> offset = directionOffset(path[i]);
+            curr = {curr.row + offset.first, curr.col + offset.second};
+            char terrain = map[curr.row][curr.col].terrain;
+            if(terrain == 'o' || terrain == '$'){
+                search_coord.push_back({curr.row, curr.col});
             }
             else {
-                search_coord.push_back({path[i].row, path[i].col});
+                sail_coord.push_back({curr.row, curr.col});
             }
         }
         std::cout << "Sail:\n";

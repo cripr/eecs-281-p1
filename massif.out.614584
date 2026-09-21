@@ -1,0 +1,874 @@
+desc: (none)
+cmd: ./hunt_valgrind
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=1999556
+mem_heap_B=73728
+mem_heap_extra_B=8
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=2013717
+mem_heap_B=196608
+mem_heap_extra_B=56
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=3
+#-----------
+time=2034293
+mem_heap_B=196681
+mem_heap_extra_B=71
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=2044219
+mem_heap_B=199609
+mem_heap_extra_B=103
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=2057240
+mem_heap_B=201805
+mem_heap_extra_B=131
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=2074914
+mem_heap_B=204367
+mem_heap_extra_B=209
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=7
+#-----------
+time=2092588
+mem_heap_B=206929
+mem_heap_extra_B=287
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=2110262
+mem_heap_B=209491
+mem_heap_extra_B=365
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=2127936
+mem_heap_B=212053
+mem_heap_extra_B=443
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=10
+#-----------
+time=2145610
+mem_heap_B=214615
+mem_heap_extra_B=521
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=2163284
+mem_heap_B=217177
+mem_heap_extra_B=599
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=2180958
+mem_heap_B=219739
+mem_heap_extra_B=677
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=2198632
+mem_heap_B=222301
+mem_heap_extra_B=755
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=2216306
+mem_heap_B=224863
+mem_heap_extra_B=833
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=2225143
+mem_heap_B=226144
+mem_heap_extra_B=872
+mem_stacks_B=0
+heap_tree=detailed
+n6: 226144 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 98304 0x4985A56: std::basic_filebuf<wchar_t, std::char_traits<wchar_t> >::_M_allocate_internal_buffer() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+  n3: 98304 0x4981ACA: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+   n1: 32768 0x4928C30: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 32768 0x11705F: main (main.cpp:19)
+   n1: 32768 0x4928C53: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 32768 0x11705F: main (main.cpp:19)
+   n1: 32768 0x4928C76: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 32768 0x11705F: main (main.cpp:19)
+ n1: 73728 0x491038E: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+  n1: 73728 0x400571E: call_init.part.0 (dl-init.c:74)
+   n1: 73728 0x4005823: call_init (dl-init.c:120)
+    n1: 73728 0x4005823: _dl_init (dl-init.c:121)
+     n0: 73728 0x401F59F: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+ n1: 24576 0x4983BC3: std::basic_filebuf<char, std::char_traits<char> >::_M_allocate_internal_buffer() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+  n3: 24576 0x49818CA: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+   n1: 8192 0x4928B7B: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 8192 0x11705F: main (main.cpp:19)
+   n1: 8192 0x4928B9E: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 8192 0x11705F: main (main.cpp:19)
+   n1: 8192 0x4928BC1: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 8192 0x11705F: main (main.cpp:19)
+ n1: 14640 0x114E4C: std::__new_allocator<Hunt::Block>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 14640 0x111D54: allocate (alloc_traits.h:482)
+   n1: 14640 0x111D54: std::_Vector_base<Hunt::Block, std::allocator<Hunt::Block> >::_M_allocate(unsigned long) (stl_vector.h:381)
+    n1: 14640 0x10F9C1: std::vector<Hunt::Block, std::allocator<Hunt::Block> >::_M_default_append(unsigned long) (vector.tcc:663)
+     n1: 14640 0x10DDBE: std::vector<Hunt::Block, std::allocator<Hunt::Block> >::resize(unsigned long) (stl_vector.h:1016)
+      n1: 14640 0x10B259: Hunt::load_from_input() (Hunt.cpp:137)
+       n0: 14640 0x1170C7: main (main.cpp:25)
+ n1: 9272 0x114F87: std::__new_allocator<std::pair<int, int> >::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 9272 0x111F42: allocate (alloc_traits.h:482)
+   n1: 9272 0x111F42: std::_Vector_base<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_allocate(unsigned long) (stl_vector.h:381)
+    n1: 9272 0x10FCB2: std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_default_append(unsigned long) (vector.tcc:663)
+     n1: 9272 0x10DE80: std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::resize(unsigned long) (stl_vector.h:1016)
+      n1: 9272 0x10B28D: Hunt::load_from_input() (Hunt.cpp:138)
+       n0: 9272 0x1170C7: main (main.cpp:25)
+ n0: 5624 in 5 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=16
+#-----------
+time=2233980
+mem_heap_B=227425
+mem_heap_extra_B=911
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=2242817
+mem_heap_B=228706
+mem_heap_extra_B=950
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=2251654
+mem_heap_B=229987
+mem_heap_extra_B=989
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=19
+#-----------
+time=2260491
+mem_heap_B=231268
+mem_heap_extra_B=1028
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=2269328
+mem_heap_B=232549
+mem_heap_extra_B=1067
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=2278165
+mem_heap_B=233830
+mem_heap_extra_B=1106
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=2287002
+mem_heap_B=235111
+mem_heap_extra_B=1145
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=2295839
+mem_heap_B=236392
+mem_heap_extra_B=1184
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=2304676
+mem_heap_B=237673
+mem_heap_extra_B=1223
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=2321377
+mem_heap_B=239503
+mem_heap_extra_B=1289
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=2330214
+mem_heap_B=240784
+mem_heap_extra_B=1328
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=2339051
+mem_heap_B=242065
+mem_heap_extra_B=1367
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=2347888
+mem_heap_B=243346
+mem_heap_extra_B=1406
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=29
+#-----------
+time=2356725
+mem_heap_B=244627
+mem_heap_extra_B=1445
+mem_stacks_B=0
+heap_tree=detailed
+n6: 244627 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 98304 0x4985A56: std::basic_filebuf<wchar_t, std::char_traits<wchar_t> >::_M_allocate_internal_buffer() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+  n3: 98304 0x4981ACA: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+   n1: 32768 0x4928C30: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 32768 0x11705F: main (main.cpp:19)
+   n1: 32768 0x4928C53: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 32768 0x11705F: main (main.cpp:19)
+   n1: 32768 0x4928C76: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 32768 0x11705F: main (main.cpp:19)
+ n1: 73728 0x491038E: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+  n1: 73728 0x400571E: call_init.part.0 (dl-init.c:74)
+   n1: 73728 0x4005823: call_init (dl-init.c:120)
+    n1: 73728 0x4005823: _dl_init (dl-init.c:121)
+     n0: 73728 0x401F59F: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+ n1: 24888 0x114E4C: std::__new_allocator<Hunt::Block>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 24888 0x111D54: allocate (alloc_traits.h:482)
+   n1: 24888 0x111D54: std::_Vector_base<Hunt::Block, std::allocator<Hunt::Block> >::_M_allocate(unsigned long) (stl_vector.h:381)
+    n1: 24888 0x10F9C1: std::vector<Hunt::Block, std::allocator<Hunt::Block> >::_M_default_append(unsigned long) (vector.tcc:663)
+     n1: 24888 0x10DDBE: std::vector<Hunt::Block, std::allocator<Hunt::Block> >::resize(unsigned long) (stl_vector.h:1016)
+      n1: 24888 0x10B259: Hunt::load_from_input() (Hunt.cpp:137)
+       n0: 24888 0x1170C7: main (main.cpp:25)
+ n1: 24576 0x4983BC3: std::basic_filebuf<char, std::char_traits<char> >::_M_allocate_internal_buffer() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+  n3: 24576 0x49818CA: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+   n1: 8192 0x4928B7B: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 8192 0x11705F: main (main.cpp:19)
+   n1: 8192 0x4928B9E: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 8192 0x11705F: main (main.cpp:19)
+   n1: 8192 0x4928BC1: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 8192 0x11705F: main (main.cpp:19)
+ n1: 16592 0x114F87: std::__new_allocator<std::pair<int, int> >::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 16592 0x111F42: allocate (alloc_traits.h:482)
+   n1: 16592 0x111F42: std::_Vector_base<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_allocate(unsigned long) (stl_vector.h:381)
+    n1: 16592 0x10FCB2: std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_default_append(unsigned long) (vector.tcc:663)
+     n1: 16592 0x10DE80: std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::resize(unsigned long) (stl_vector.h:1016)
+      n1: 16592 0x10B28D: Hunt::load_from_input() (Hunt.cpp:138)
+       n0: 16592 0x1170C7: main (main.cpp:25)
+ n0: 6539 in 5 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=30
+#-----------
+time=2365562
+mem_heap_B=245908
+mem_heap_extra_B=1484
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=2374399
+mem_heap_B=247189
+mem_heap_extra_B=1523
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=2383236
+mem_heap_B=248470
+mem_heap_extra_B=1562
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=2392073
+mem_heap_B=249751
+mem_heap_extra_B=1601
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=2400910
+mem_heap_B=251032
+mem_heap_extra_B=1640
+mem_stacks_B=0
+heap_tree=detailed
+n6: 251032 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 98304 0x4985A56: std::basic_filebuf<wchar_t, std::char_traits<wchar_t> >::_M_allocate_internal_buffer() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+  n3: 98304 0x4981ACA: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+   n1: 32768 0x4928C30: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 32768 0x11705F: main (main.cpp:19)
+   n1: 32768 0x4928C53: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 32768 0x11705F: main (main.cpp:19)
+   n1: 32768 0x4928C76: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 32768 0x11705F: main (main.cpp:19)
+ n1: 73728 0x491038E: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+  n1: 73728 0x400571E: call_init.part.0 (dl-init.c:74)
+   n1: 73728 0x4005823: call_init (dl-init.c:120)
+    n1: 73728 0x4005823: _dl_init (dl-init.c:121)
+     n0: 73728 0x401F59F: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+ n1: 28548 0x114E4C: std::__new_allocator<Hunt::Block>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 28548 0x111D54: allocate (alloc_traits.h:482)
+   n1: 28548 0x111D54: std::_Vector_base<Hunt::Block, std::allocator<Hunt::Block> >::_M_allocate(unsigned long) (stl_vector.h:381)
+    n1: 28548 0x10F9C1: std::vector<Hunt::Block, std::allocator<Hunt::Block> >::_M_default_append(unsigned long) (vector.tcc:663)
+     n1: 28548 0x10DDBE: std::vector<Hunt::Block, std::allocator<Hunt::Block> >::resize(unsigned long) (stl_vector.h:1016)
+      n1: 28548 0x10B259: Hunt::load_from_input() (Hunt.cpp:137)
+       n0: 28548 0x1170C7: main (main.cpp:25)
+ n1: 24576 0x4983BC3: std::basic_filebuf<char, std::char_traits<char> >::_M_allocate_internal_buffer() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+  n3: 24576 0x49818CA: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+   n1: 8192 0x4928B7B: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 8192 0x11705F: main (main.cpp:19)
+   n1: 8192 0x4928B9E: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 8192 0x11705F: main (main.cpp:19)
+   n1: 8192 0x4928BC1: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 8192 0x11705F: main (main.cpp:19)
+ n1: 19032 0x114F87: std::__new_allocator<std::pair<int, int> >::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 19032 0x111F42: allocate (alloc_traits.h:482)
+   n1: 19032 0x111F42: std::_Vector_base<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_allocate(unsigned long) (stl_vector.h:381)
+    n1: 19032 0x10FCB2: std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_default_append(unsigned long) (vector.tcc:663)
+     n1: 19032 0x10DE80: std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::resize(unsigned long) (stl_vector.h:1016)
+      n1: 19032 0x10B28D: Hunt::load_from_input() (Hunt.cpp:138)
+       n0: 19032 0x1170C7: main (main.cpp:25)
+ n0: 6844 in 5 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=35
+#-----------
+time=2409747
+mem_heap_B=252313
+mem_heap_extra_B=1679
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=36
+#-----------
+time=2418584
+mem_heap_B=253594
+mem_heap_extra_B=1718
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=2427421
+mem_heap_B=254875
+mem_heap_extra_B=1757
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=38
+#-----------
+time=2436258
+mem_heap_B=256156
+mem_heap_extra_B=1796
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=2445095
+mem_heap_B=257437
+mem_heap_extra_B=1835
+mem_stacks_B=0
+heap_tree=detailed
+n7: 257437 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 98304 0x4985A56: std::basic_filebuf<wchar_t, std::char_traits<wchar_t> >::_M_allocate_internal_buffer() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+  n3: 98304 0x4981ACA: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+   n1: 32768 0x4928C30: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 32768 0x11705F: main (main.cpp:19)
+   n1: 32768 0x4928C53: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 32768 0x11705F: main (main.cpp:19)
+   n1: 32768 0x4928C76: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 32768 0x11705F: main (main.cpp:19)
+ n1: 73728 0x491038E: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+  n1: 73728 0x400571E: call_init.part.0 (dl-init.c:74)
+   n1: 73728 0x4005823: call_init (dl-init.c:120)
+    n1: 73728 0x4005823: _dl_init (dl-init.c:121)
+     n0: 73728 0x401F59F: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+ n1: 32208 0x114E4C: std::__new_allocator<Hunt::Block>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 32208 0x111D54: allocate (alloc_traits.h:482)
+   n1: 32208 0x111D54: std::_Vector_base<Hunt::Block, std::allocator<Hunt::Block> >::_M_allocate(unsigned long) (stl_vector.h:381)
+    n1: 32208 0x10F9C1: std::vector<Hunt::Block, std::allocator<Hunt::Block> >::_M_default_append(unsigned long) (vector.tcc:663)
+     n1: 32208 0x10DDBE: std::vector<Hunt::Block, std::allocator<Hunt::Block> >::resize(unsigned long) (stl_vector.h:1016)
+      n1: 32208 0x10B259: Hunt::load_from_input() (Hunt.cpp:137)
+       n0: 32208 0x1170C7: main (main.cpp:25)
+ n1: 24576 0x4983BC3: std::basic_filebuf<char, std::char_traits<char> >::_M_allocate_internal_buffer() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+  n3: 24576 0x49818CA: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+   n1: 8192 0x4928B7B: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 8192 0x11705F: main (main.cpp:19)
+   n1: 8192 0x4928B9E: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 8192 0x11705F: main (main.cpp:19)
+   n1: 8192 0x4928BC1: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 8192 0x11705F: main (main.cpp:19)
+ n1: 21472 0x114F87: std::__new_allocator<std::pair<int, int> >::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 21472 0x111F42: allocate (alloc_traits.h:482)
+   n1: 21472 0x111F42: std::_Vector_base<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_allocate(unsigned long) (stl_vector.h:381)
+    n1: 21472 0x10FCB2: std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_default_append(unsigned long) (vector.tcc:663)
+     n1: 21472 0x10DE80: std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::resize(unsigned long) (stl_vector.h:1016)
+      n1: 21472 0x10B28D: Hunt::load_from_input() (Hunt.cpp:138)
+       n0: 21472 0x1170C7: main (main.cpp:25)
+ n0: 4465 in 4 places, all below massif's threshold (1.00%)
+ n1: 2684 0x1149C2: std::__new_allocator<char>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 2684 0x112182: allocate (alloc_traits.h:482)
+   n1: 2684 0x112182: std::_Vector_base<char, std::allocator<char> >::_M_allocate(unsigned long) (stl_vector.h:381)
+    n1: 2684 0x10FF59: std::vector<char, std::allocator<char> >::_M_default_append(unsigned long) (vector.tcc:663)
+     n1: 2684 0x10DF38: std::vector<char, std::allocator<char> >::resize(unsigned long) (stl_vector.h:1016)
+      n1: 2684 0x10B2C1: Hunt::load_from_input() (Hunt.cpp:139)
+       n0: 2684 0x1170C7: main (main.cpp:25)
+#-----------
+snapshot=40
+#-----------
+time=2453932
+mem_heap_B=258718
+mem_heap_extra_B=1874
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=41
+#-----------
+time=2462769
+mem_heap_B=259999
+mem_heap_extra_B=1913
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=2471606
+mem_heap_B=261280
+mem_heap_extra_B=1952
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=2480443
+mem_heap_B=262561
+mem_heap_extra_B=1991
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=44
+#-----------
+time=2489280
+mem_heap_B=263842
+mem_heap_extra_B=2030
+mem_stacks_B=0
+heap_tree=detailed
+n7: 263842 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 98304 0x4985A56: std::basic_filebuf<wchar_t, std::char_traits<wchar_t> >::_M_allocate_internal_buffer() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+  n3: 98304 0x4981ACA: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+   n1: 32768 0x4928C30: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 32768 0x11705F: main (main.cpp:19)
+   n1: 32768 0x4928C53: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 32768 0x11705F: main (main.cpp:19)
+   n1: 32768 0x4928C76: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 32768 0x11705F: main (main.cpp:19)
+ n1: 73728 0x491038E: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+  n1: 73728 0x400571E: call_init.part.0 (dl-init.c:74)
+   n1: 73728 0x4005823: call_init (dl-init.c:120)
+    n1: 73728 0x4005823: _dl_init (dl-init.c:121)
+     n0: 73728 0x401F59F: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+ n1: 35868 0x114E4C: std::__new_allocator<Hunt::Block>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 35868 0x111D54: allocate (alloc_traits.h:482)
+   n1: 35868 0x111D54: std::_Vector_base<Hunt::Block, std::allocator<Hunt::Block> >::_M_allocate(unsigned long) (stl_vector.h:381)
+    n1: 35868 0x10F9C1: std::vector<Hunt::Block, std::allocator<Hunt::Block> >::_M_default_append(unsigned long) (vector.tcc:663)
+     n1: 35868 0x10DDBE: std::vector<Hunt::Block, std::allocator<Hunt::Block> >::resize(unsigned long) (stl_vector.h:1016)
+      n1: 35868 0x10B259: Hunt::load_from_input() (Hunt.cpp:137)
+       n0: 35868 0x1170C7: main (main.cpp:25)
+ n1: 24576 0x4983BC3: std::basic_filebuf<char, std::char_traits<char> >::_M_allocate_internal_buffer() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+  n3: 24576 0x49818CA: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+   n1: 8192 0x4928B7B: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 8192 0x11705F: main (main.cpp:19)
+   n1: 8192 0x4928B9E: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 8192 0x11705F: main (main.cpp:19)
+   n1: 8192 0x4928BC1: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 8192 0x11705F: main (main.cpp:19)
+ n1: 23912 0x114F87: std::__new_allocator<std::pair<int, int> >::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 23912 0x111F42: allocate (alloc_traits.h:482)
+   n1: 23912 0x111F42: std::_Vector_base<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_allocate(unsigned long) (stl_vector.h:381)
+    n1: 23912 0x10FCB2: std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_default_append(unsigned long) (vector.tcc:663)
+     n1: 23912 0x10DE80: std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::resize(unsigned long) (stl_vector.h:1016)
+      n1: 23912 0x10B28D: Hunt::load_from_input() (Hunt.cpp:138)
+       n0: 23912 0x1170C7: main (main.cpp:25)
+ n0: 4465 in 4 places, all below massif's threshold (1.00%)
+ n1: 2989 0x1149C2: std::__new_allocator<char>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 2989 0x112182: allocate (alloc_traits.h:482)
+   n1: 2989 0x112182: std::_Vector_base<char, std::allocator<char> >::_M_allocate(unsigned long) (stl_vector.h:381)
+    n1: 2989 0x10FF59: std::vector<char, std::allocator<char> >::_M_default_append(unsigned long) (vector.tcc:663)
+     n1: 2989 0x10DF38: std::vector<char, std::allocator<char> >::resize(unsigned long) (stl_vector.h:1016)
+      n1: 2989 0x10B2C1: Hunt::load_from_input() (Hunt.cpp:139)
+       n0: 2989 0x1170C7: main (main.cpp:25)
+#-----------
+snapshot=45
+#-----------
+time=2498117
+mem_heap_B=265123
+mem_heap_extra_B=2069
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=46
+#-----------
+time=2506954
+mem_heap_B=266404
+mem_heap_extra_B=2108
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=2515791
+mem_heap_B=267685
+mem_heap_extra_B=2147
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=2524628
+mem_heap_B=268966
+mem_heap_extra_B=2186
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=49
+#-----------
+time=2533465
+mem_heap_B=270247
+mem_heap_extra_B=2225
+mem_stacks_B=0
+heap_tree=detailed
+n7: 270247 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 98304 0x4985A56: std::basic_filebuf<wchar_t, std::char_traits<wchar_t> >::_M_allocate_internal_buffer() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+  n3: 98304 0x4981ACA: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+   n1: 32768 0x4928C30: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 32768 0x11705F: main (main.cpp:19)
+   n1: 32768 0x4928C53: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 32768 0x11705F: main (main.cpp:19)
+   n1: 32768 0x4928C76: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 32768 0x11705F: main (main.cpp:19)
+ n1: 73728 0x491038E: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+  n1: 73728 0x400571E: call_init.part.0 (dl-init.c:74)
+   n1: 73728 0x4005823: call_init (dl-init.c:120)
+    n1: 73728 0x4005823: _dl_init (dl-init.c:121)
+     n0: 73728 0x401F59F: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+ n1: 39528 0x114E4C: std::__new_allocator<Hunt::Block>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 39528 0x111D54: allocate (alloc_traits.h:482)
+   n1: 39528 0x111D54: std::_Vector_base<Hunt::Block, std::allocator<Hunt::Block> >::_M_allocate(unsigned long) (stl_vector.h:381)
+    n1: 39528 0x10F9C1: std::vector<Hunt::Block, std::allocator<Hunt::Block> >::_M_default_append(unsigned long) (vector.tcc:663)
+     n1: 39528 0x10DDBE: std::vector<Hunt::Block, std::allocator<Hunt::Block> >::resize(unsigned long) (stl_vector.h:1016)
+      n1: 39528 0x10B259: Hunt::load_from_input() (Hunt.cpp:137)
+       n0: 39528 0x1170C7: main (main.cpp:25)
+ n1: 26352 0x114F87: std::__new_allocator<std::pair<int, int> >::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 26352 0x111F42: allocate (alloc_traits.h:482)
+   n1: 26352 0x111F42: std::_Vector_base<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_allocate(unsigned long) (stl_vector.h:381)
+    n1: 26352 0x10FCB2: std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_default_append(unsigned long) (vector.tcc:663)
+     n1: 26352 0x10DE80: std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::resize(unsigned long) (stl_vector.h:1016)
+      n1: 26352 0x10B28D: Hunt::load_from_input() (Hunt.cpp:138)
+       n0: 26352 0x1170C7: main (main.cpp:25)
+ n1: 24576 0x4983BC3: std::basic_filebuf<char, std::char_traits<char> >::_M_allocate_internal_buffer() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+  n3: 24576 0x49818CA: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+   n1: 8192 0x4928B7B: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 8192 0x11705F: main (main.cpp:19)
+   n1: 8192 0x4928B9E: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 8192 0x11705F: main (main.cpp:19)
+   n1: 8192 0x4928BC1: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 8192 0x11705F: main (main.cpp:19)
+ n0: 4465 in 4 places, all below massif's threshold (1.00%)
+ n1: 3294 0x1149C2: std::__new_allocator<char>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 3294 0x112182: allocate (alloc_traits.h:482)
+   n1: 3294 0x112182: std::_Vector_base<char, std::allocator<char> >::_M_allocate(unsigned long) (stl_vector.h:381)
+    n1: 3294 0x10FF59: std::vector<char, std::allocator<char> >::_M_default_append(unsigned long) (vector.tcc:663)
+     n1: 3294 0x10DF38: std::vector<char, std::allocator<char> >::resize(unsigned long) (stl_vector.h:1016)
+      n1: 3294 0x10B2C1: Hunt::load_from_input() (Hunt.cpp:139)
+       n0: 3294 0x1170C7: main (main.cpp:25)
+#-----------
+snapshot=50
+#-----------
+time=2542302
+mem_heap_B=271528
+mem_heap_extra_B=2264
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=51
+#-----------
+time=2551139
+mem_heap_B=272809
+mem_heap_extra_B=2303
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=52
+#-----------
+time=2559976
+mem_heap_B=274090
+mem_heap_extra_B=2342
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=53
+#-----------
+time=2568813
+mem_heap_B=275371
+mem_heap_extra_B=2381
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=54
+#-----------
+time=2577650
+mem_heap_B=276652
+mem_heap_extra_B=2420
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=55
+#-----------
+time=2586487
+mem_heap_B=277933
+mem_heap_extra_B=2459
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=56
+#-----------
+time=2595324
+mem_heap_B=279214
+mem_heap_extra_B=2498
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=57
+#-----------
+time=3531884
+mem_heap_B=279214
+mem_heap_extra_B=2498
+mem_stacks_B=0
+heap_tree=peak
+n7: 279214 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 98304 0x4985A56: std::basic_filebuf<wchar_t, std::char_traits<wchar_t> >::_M_allocate_internal_buffer() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+  n3: 98304 0x4981ACA: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+   n1: 32768 0x4928C30: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 32768 0x11705F: main (main.cpp:19)
+   n1: 32768 0x4928C53: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 32768 0x11705F: main (main.cpp:19)
+   n1: 32768 0x4928C76: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 32768 0x11705F: main (main.cpp:19)
+ n1: 73728 0x491038E: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+  n1: 73728 0x400571E: call_init.part.0 (dl-init.c:74)
+   n1: 73728 0x4005823: call_init (dl-init.c:120)
+    n1: 73728 0x4005823: _dl_init (dl-init.c:121)
+     n0: 73728 0x401F59F: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+ n1: 44652 0x114E4C: std::__new_allocator<Hunt::Block>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 44652 0x111D54: allocate (alloc_traits.h:482)
+   n1: 44652 0x111D54: std::_Vector_base<Hunt::Block, std::allocator<Hunt::Block> >::_M_allocate(unsigned long) (stl_vector.h:381)
+    n1: 44652 0x10F9C1: std::vector<Hunt::Block, std::allocator<Hunt::Block> >::_M_default_append(unsigned long) (vector.tcc:663)
+     n1: 44652 0x10DDBE: std::vector<Hunt::Block, std::allocator<Hunt::Block> >::resize(unsigned long) (stl_vector.h:1016)
+      n1: 44652 0x10B259: Hunt::load_from_input() (Hunt.cpp:137)
+       n0: 44652 0x1170C7: main (main.cpp:25)
+ n1: 29768 0x114F87: std::__new_allocator<std::pair<int, int> >::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 29768 0x111F42: allocate (alloc_traits.h:482)
+   n1: 29768 0x111F42: std::_Vector_base<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_allocate(unsigned long) (stl_vector.h:381)
+    n1: 29768 0x10FCB2: std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_default_append(unsigned long) (vector.tcc:663)
+     n1: 29768 0x10DE80: std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::resize(unsigned long) (stl_vector.h:1016)
+      n1: 29768 0x10B28D: Hunt::load_from_input() (Hunt.cpp:138)
+       n0: 29768 0x1170C7: main (main.cpp:25)
+ n1: 24576 0x4983BC3: std::basic_filebuf<char, std::char_traits<char> >::_M_allocate_internal_buffer() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+  n3: 24576 0x49818CA: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+   n1: 8192 0x4928B7B: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 8192 0x11705F: main (main.cpp:19)
+   n1: 8192 0x4928B9E: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 8192 0x11705F: main (main.cpp:19)
+   n1: 8192 0x4928BC1: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 8192 0x11705F: main (main.cpp:19)
+ n0: 4465 in 4 places, all below massif's threshold (1.00%)
+ n1: 3721 0x1149C2: std::__new_allocator<char>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 3721 0x112182: allocate (alloc_traits.h:482)
+   n1: 3721 0x112182: std::_Vector_base<char, std::allocator<char> >::_M_allocate(unsigned long) (stl_vector.h:381)
+    n1: 3721 0x10FF59: std::vector<char, std::allocator<char> >::_M_default_append(unsigned long) (vector.tcc:663)
+     n1: 3721 0x10DF38: std::vector<char, std::allocator<char> >::resize(unsigned long) (stl_vector.h:1016)
+      n1: 3721 0x10B2C1: Hunt::load_from_input() (Hunt.cpp:139)
+       n0: 3721 0x1170C7: main (main.cpp:25)
+#-----------
+snapshot=58
+#-----------
+time=3592471
+mem_heap_B=280213
+mem_heap_extra_B=2539
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=59
+#-----------
+time=3620866
+mem_heap_B=280277
+mem_heap_extra_B=2547
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=60
+#-----------
+time=3634037
+mem_heap_B=279729
+mem_heap_extra_B=2527
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=61
+#-----------
+time=3971159
+mem_heap_B=279217
+mem_heap_extra_B=2519
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=62
+#-----------
+time=4017826
+mem_heap_B=279729
+mem_heap_extra_B=2527
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=63
+#-----------
+time=4028539
+mem_heap_B=279141
+mem_heap_extra_B=2483
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=64
+#-----------
+time=4037554
+mem_heap_B=276579
+mem_heap_extra_B=2021
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=65
+#-----------
+time=4046580
+mem_heap_B=263220
+mem_heap_extra_B=1444
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=66
+#-----------
+time=4055470
+mem_heap_B=241992
+mem_heap_extra_B=792
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=67
+#-----------
+time=4064350
+mem_heap_B=212712
+mem_heap_extra_B=312
+mem_stacks_B=0
+heap_tree=detailed
+n5: 212712 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 98304 0x4985A56: std::basic_filebuf<wchar_t, std::char_traits<wchar_t> >::_M_allocate_internal_buffer() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+  n3: 98304 0x4981ACA: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+   n1: 32768 0x4928C30: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 32768 0x11705F: main (main.cpp:19)
+   n1: 32768 0x4928C53: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 32768 0x11705F: main (main.cpp:19)
+   n1: 32768 0x4928C76: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 32768 0x11705F: main (main.cpp:19)
+ n1: 73728 0x491038E: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+  n1: 73728 0x400571E: call_init.part.0 (dl-init.c:74)
+   n1: 73728 0x4005823: call_init (dl-init.c:120)
+    n1: 73728 0x4005823: _dl_init (dl-init.c:121)
+     n0: 73728 0x401F59F: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+ n1: 24576 0x4983BC3: std::basic_filebuf<char, std::char_traits<char> >::_M_allocate_internal_buffer() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+  n3: 24576 0x49818CA: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+   n1: 8192 0x4928B7B: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 8192 0x11705F: main (main.cpp:19)
+   n1: 8192 0x4928B9E: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 8192 0x11705F: main (main.cpp:19)
+   n1: 8192 0x4928BC1: std::ios_base::sync_with_stdio(bool) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.33)
+    n0: 8192 0x11705F: main (main.cpp:19)
+ n2: 14640 0x114E4C: std::__new_allocator<Hunt::Block>::allocate(unsigned long, void const*) (new_allocator.h:151)
+  n1: 14640 0x111D54: allocate (alloc_traits.h:482)
+   n2: 14640 0x111D54: std::_Vector_base<Hunt::Block, std::allocator<Hunt::Block> >::_M_allocate(unsigned long) (stl_vector.h:381)
+    n1: 14640 0x10F9C1: std::vector<Hunt::Block, std::allocator<Hunt::Block> >::_M_default_append(unsigned long) (vector.tcc:663)
+     n1: 14640 0x10DDBE: std::vector<Hunt::Block, std::allocator<Hunt::Block> >::resize(unsigned long) (stl_vector.h:1016)
+      n1: 14640 0x10B259: Hunt::load_from_input() (Hunt.cpp:137)
+       n0: 14640 0x1170C7: main (main.cpp:25)
+    n0: 0 in 1 place, below massif's threshold (1.00%)
+  n0: 0 in 1 place, below massif's threshold (1.00%)
+ n0: 1464 in 8 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=68
+#-----------
+time=4079102
+mem_heap_B=122880
+mem_heap_extra_B=48
+mem_stacks_B=0
+heap_tree=empty
